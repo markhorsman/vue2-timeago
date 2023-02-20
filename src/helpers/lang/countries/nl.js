@@ -1,5 +1,15 @@
 function formatToLongString(time, type) {
-  return `${time} ${type}${time > 1 ? 's' : ''} geleden`
+  switch (type) {
+    case 'seconde':
+    case 'dag':
+      return `${time} ${type}${time > 1 ? 'n' : ''} geleden`;
+    case 'minuut':
+      return `${time} ${time > 1 ? 'minuten' : 'minuut'} geleden`;
+    case 'uur':
+      return `${time} uur geleden`;
+  }
+
+  return `${time} ${type}${time > 1 ? 'n' : ''} geleden`;
 }
 
 export default {
@@ -7,7 +17,7 @@ export default {
     now: 'zojuist',
     sec: 's',
     min: 'm',
-    hour: 'h',
+    hour: 'u',
     day: 'd',
   },
   long: {
